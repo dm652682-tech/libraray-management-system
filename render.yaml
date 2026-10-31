@@ -1,0 +1,19 @@
+# Render.com blueprint. Free plan has an EPHEMERAL disk: library.db resets on every redeploy/restart.
+# For permanent data use a paid plan with a disk mounted at /var/data (uncomment the disk block).
+services:
+  - type: web
+    name: pustakalaya
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      # - key: LIBRARY_DB
+      #   value: /var/data/library.db
+    # disk:
+    #   name: library-data
+    #   mountPath: /var/data
+    #   sizeGB: 1

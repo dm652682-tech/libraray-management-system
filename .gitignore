@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+library.db
+.env
+node_modules/
+client/dist/
+coverage/
+npm-debug.log*
+server/.mongo-data/
